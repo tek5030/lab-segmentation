@@ -6,3 +6,6 @@ cmake-build*
 
 opencv/
 opencv*/
+venv
+.vscode
+.ipynb_checkpoints
