@@ -1,57 +1,49 @@
 # Step 1: Get an overview
-Today we will implement and experiment with a simple segmentation method based on color. You can choose to work on 
-images from your camera or on the provided videos captured from an autonomous vehicle.
+Today we will implement and experiment with a simple segmentation method based on colour.
+You can choose to work on images from your camera or on the provided [videos captured from an autonomous vehicle](../README.md).
 
-We will begin by using the measured color [R,G,B] (or [B,G,R] in OpenCV) as a 3-dimensional feature vector for each pixel.
-Pixels with similar colors should be in the same region of the 3-dimensional feature space.
-If we know what kind of pixels we are looking for, we can represent them using a multivariate normal distribution.
-We can then use the Mahalanobis distance to determine how well a pixel fits with the distribution.
-Doing so for all pixels in an image gives us an image of Mahalanobis distances between the pixels and the distribution.
+We will begin by using the measured colour ([B,G,R] in OpenCV) as a 3-dimensional *feature vector* for each pixel.
+Pixels with similar colours should be distributed in the same region of the 3-dimensional feature space.
+We can represent this distribution by training a *multivariate normal model* on feature samples.
+This allows us to measure how well new samples fit with this distribution by computing the *Mahalanobis distance*.
 
-By thresholding the Mahalanobis distance image we get a binary image indicating the pixels that are closer than
-the chosen threshold.
+Doing so for all pixels in an image gives us an image of Mahalanobis distances between each pixel and the feature model.
+By thresholding the Mahalanobis distance image we get a binary image indicating segments of pixels that are sufficiently similar to the training samples.
 
-As we will experience, this is a very simplistic approach. 
-But the method can naturally be generalized and improved:
+This is a simplistic approach, but the method can naturally be generalised and improved:
 
-- We can transform the colors to another, better suited color space.
-- Each pixel can be represented by more features than just color, thus increasing the dimension of the feature space.
-- The group of pixels that we want to segment out might not fit well with a multivariate normal distribution, so we can
- use a more flexible distribution instead.
+- We can transform the colours to another, better suited colour space.
+- Each pixel can be represented with more features than just colour.
+- The set of pixels that we want to segment out might not fit well with a multivariate normal distribution, so we can
+  use a more flexible distribution instead.
 
   
 ## Main steps in this lab
-- **Estimate a multivariate normal distribution** based on the pixels in a predefined sample region.
+1. **Estimate a multivariate normal distribution** by training on the feature samples in a predefined sample region.
 
-  ![illustration of the estimation process](img/from_rgb_to_normal_dist.png)
+![illustration of the estimation process](img/from_rgb_to_normal_dist.png)
 
-- For the following images, **create a Mahalanobis image** by computing the Mahalanobis distance between each pixel 
-and the multivariate normal distribution.
+2. **Compute Mahalanobis images** by calculating the Mahalanobis distance between each pixel and the model.
 
-- **Create a binary image** by thresholding the transformed Mahalanobis image manually or by using Otsu's method.
-The final binary image is the result of our segmentation method and we can use it to highlight the corresponding pixels
-in the original image.
+3. **Detect similar pixels** by thresholding the Mahalanobis image.
+   The final binary image is the result of our segmentation method.
 
-  ![Illustration of the evaluation process](img/from_rgb_and_normal_dist_to_segmentation.png)
- 
- - We will also implement **an adaptive segmentation procedure**, that gradually updates the multivariate normal distribution based on how the pixels in the
- sampling region change over time. 
- 
- Finally we will use our segmentation method to perform road segmentation in videos captured from an autonomous 
- vehicle.
+![Illustration of the evaluation process](img/from_rgb_and_normal_dist_to_segmentation.png)
+
+4. We will also implement **an adaptive segmentation procedure**, that gradually updates the model based on how the pixels in the sampling region change over time.
 
 
 ## Introduction to the project source files
 We have chosen to distribute the code on the following files:
-- _lab_11.{h,cpp}_
+- _lab-segmentation.{h,cpp}_
 
   Contains the main loop of the program, and several utility functions.
-  
+
   Note in particular that:
-    - Keypress `space` samples pixels from the sampling region and estimates the multivariate normal model
-    - Keypress `o` turns thresholding by Otsu's method on/off (Default is off)
-    - Keypress `a` turns the adaptive model on/off (Default is off)
-    - Any other key exits the program
+  - Keypress `space` samples pixels from the sampling region and estimates the multivariate normal model
+  - Keypress `o` turns thresholding by Otsu's method on/off (Default is off)
+  - Keypress `a` turns the adaptive model on/off (Default is off)
+  - Keypress `q` exits the program
   
   If you want to work on images from one of the videos instead of from the camera, you can change to code from 
   `cv::VideoCapture cap{0}` to `cv::VideoCapture cap{"your_video_path.avi"}`.
@@ -64,7 +56,7 @@ We have chosen to distribute the code on the following files:
 
 - _main.cpp_
 
-  Starts lab 11, catches any exceptions and prints their error message on the console.
+  Starts the lab, catches any exceptions and prints their error message on the console.
   
   
   Please continue to the [next step](2-implement-simple-color-based-segmentation.md).
