@@ -14,6 +14,7 @@ The lab is carried out by following these steps:
 
 Please start the lab by going to the [first step](lab-guide/1-get-an-overview.md).
 
+At an appropriate time, our [proposed solution](https://github.com/tek5030/solution-segmentation) will be made available.
 ---
 
 ##### &ast; Download videos using terminal
