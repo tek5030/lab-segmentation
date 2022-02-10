@@ -1,6 +1,6 @@
 #include "multivariate-normal-model.h"
 #include "opencv2/imgproc.hpp"
-
+#include <iostream>
 MultivariateNormalModel::MultivariateNormalModel(const cv::Mat& samples)
 {
   performTraining(samples);
@@ -9,9 +9,12 @@ MultivariateNormalModel::MultivariateNormalModel(const cv::Mat& samples)
 
 void MultivariateNormalModel::performTraining(const cv::Mat& samples)
 {
-  cv::calcCovarMatrix(samples, covariance_, mean_, cv::COVAR_NORMAL | cv::COVAR_ROWS, CV_32F);
-  covariance_ /= (samples.rows - 1);
-  cv::invert(covariance_, inverse_covariance_, cv::DECOMP_SVD);
+  // TODO 1.1: Train the multivariate normal model by estimating the mean and covariance given the samples.
+  mean_ = cv::Mat::ones(1, samples.cols, CV_32F);                 // Dummy, replace
+  covariance_ = cv::Mat::eye(samples.cols, samples.cols, CV_32F); // Dummy, replace
+
+  // TODO 1.2: Compute the inverse of the estimated covariance.
+  inverse_covariance_ = cv::Mat::eye(samples.cols, samples.cols, CV_32F);  // Dummy, replace
 }
 
 
@@ -25,15 +28,8 @@ cv::Mat MultivariateNormalModel::computeMahalanobisDistances(const cv::Mat& imag
 
   cv::Mat mahalanobis_img(image.size(), CV_32F);
 
-  // For the fastest possible access of image data
-  // see https://docs.opencv.org/4.0.1/db/da5/tutorial_how_to_scan_images.html
-  const auto mahalanobis_img_ptr = mahalanobis_img.ptr<float>();
-
-  for (int i=0; i < float_image.rows; ++i)
-  {
-    const cv::Mat sample = float_image.row(i);
-    mahalanobis_img_ptr[i] = static_cast<float>(cv::Mahalanobis(sample , mean_, inverse_covariance_));
-  }
+  // TODO 2: Compute the mahalanobis distance for each pixel feature vector wrt the multivariate normal model.
+  mahalanobis_img.setTo(std::numeric_limits<float>::infinity());
 
   return mahalanobis_img;
 }

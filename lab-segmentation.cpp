@@ -141,16 +141,10 @@ void runSegmentationLab()
 }
 
 
-cv::Mat extractFeatures(const cv::Mat& frame)
+void updateSamples(cv::Mat& old_samples, const cv::Mat& new_samples, const float update_ratio)
 {
-  // Convert to float32
-  cv::Mat feature_image;
-  frame.convertTo(feature_image, CV_32F, 1. / 255.);
-
-  // Choose a colour format:
-  cv::cvtColor(feature_image, feature_image, cv::COLOR_BGR2YCrCb);
-
-  return feature_image;
+  // TODO 3: Implement a random update of samples given the ratio of new_samples
+  old_samples = new_samples; // Dummy, replace
 }
 
 
@@ -176,21 +170,19 @@ cv::Mat performSegmentation(
                                                 thresh_type);
   threshold_value = static_cast<int>(std::round(scaled_threshold / scale));
 
-  // Perform cleanup using morphological operations.
-  cv::Mat structuring_element = cv::getStructuringElement(cv::MORPH_RECT, {5, 5});
-  cv::morphologyEx(segmented_image, segmented_image, cv::MORPH_OPEN, structuring_element);
-  cv::morphologyEx(segmented_image, segmented_image, cv::MORPH_CLOSE, structuring_element);
+  // TODO 4: Perform cleanup using morphological operations.
 
   return segmented_image;
 }
 
 
-void updateSamples(cv::Mat& old_samples, const cv::Mat& new_samples, const float update_ratio)
+cv::Mat extractFeatures(const cv::Mat& frame)
 {
-  // Draw uniformly distributed random numbers
-  cv::Mat rand_num = cv::Mat::zeros(new_samples.size(), CV_32FC1);
-  cv::randu(rand_num, 0., 1.);
+  // Convert to float32
+  cv::Mat feature_image;
+  frame.convertTo(feature_image, CV_32F, 1. / 255.);
 
-  // Update samples
-  new_samples.copyTo(old_samples, rand_num < update_ratio);
+  // TODO 5: Extract other/more features for each pixel.
+
+  return feature_image;
 }
