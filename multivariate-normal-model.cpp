@@ -1,6 +1,6 @@
 #include "multivariate-normal-model.h"
 #include "opencv2/imgproc.hpp"
-#include <iostream>
+
 MultivariateNormalModel::MultivariateNormalModel(const cv::Mat& samples)
 {
   performTraining(samples);
