@@ -1,7 +1,4 @@
-# Lab 11: Segmentation
-
-Welcome to lab 11!
-
+# Lab: Real-time learning and segmentation
 In this lab we will experiment with real time image segmentation on image streams from a camera or a prerecorded video.
 
 Start by cloning this repository on your machine.
@@ -13,9 +10,7 @@ The lab is carried out by following these steps:
 
 1. [Get an overview](lab-guide/1-get-an-overview.md)
 2. [Implement simple color-based segmentation](lab-guide/2-implement-simple-color-based-segmentation.md)
-4. [Further work](lab-guide/3-further-work.md)
-
-At an appropriate time, our [proposed solution](https://github.com/tek5030/lab_11_solution) will be made available.
+3. [Further work](lab-guide/3-further-work.md)
 
 Please start the lab by going to the [first step](lab-guide/1-get-an-overview.md).
 
