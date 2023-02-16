@@ -10,6 +10,7 @@ The multivariate normal distribution is characterized by a mean vector **&mu;** 
 (\boldsymbol{\mu} - \mathbf{x}) \right]](img/multivariate_normal_distribution.png)
 
 The method `MultivariateNormalModel::performTraining()` should estimate the mean `mean_` and the covariance `covariance_` for the model based on the training samples in the matrix `samples` collected from the sampling region.
+
 It must also compute the inverse of the covariance matrix `inverse_covariance_`, which we will later use to compute the Mahalanobis distance.
 
 Hints:
@@ -27,7 +28,7 @@ normal model described by `mean_` and `inverse_covariance_` and return an image 
 
 For tips about how to iterate `cv::Mat`s, you may take a look at the [OpenCV tutorials].
 
-## 3. Experiment!
+## Experiment!
 Now you should have a working segmentation method, and it is finally time to play around with it!
 
 For example:
