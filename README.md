@@ -3,7 +3,7 @@ Welcome to this lab in the computer vision course [TEK5030] at the University of
 In this lab we will experiment with real time image segmentation on image streams from a camera or a prerecorded video.
 
 Start by cloning this repository on your machine and set up your project using conan (see below).
-If you want to use prerecorded video, you can download the [videos](https://www.uio.no/studier/emner/matnat/its/TEK5030/v19/resurser/lab_11_videos.zip)
+If you want to use prerecorded video, you can download the [videos]
 (259MB) and unzip them somewhere convenient on your computer[&ast;](#terminal).
 Then open the lab project in your editor.
 
@@ -39,3 +39,8 @@ wget https://www.uio.no/studier/emner/matnat/its/TEK5030/v19/resurser/lab_11_vid
 unzip lab_11_videos.zip
 rm lab_11_videos.zip
 ```
+
+[TEK5030]: https://www.uio.no/studier/emner/matnat/its/TEK5030/
+[videos]: https://www.uio.no/studier/emner/matnat/its/TEK5030/v19/resurser/lab_11_videos.zip
+[conan]: https://tek5030.github.io/tutorial/conan.html
+[lab_intro]: https://github.com/tek5030/lab-intro/blob/master/cpp/lab-guide/1-open-project-in-clion.md#6-configure-project
