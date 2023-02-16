@@ -14,8 +14,12 @@ The method `MultivariateNormalModel::performTraining()` should estimate the mean
 It must also compute the inverse of the covariance matrix `inverse_covariance_`, which we will later use to compute the Mahalanobis distance.
 
 Hints:
-- Take a look at [cv::Mahalanobis].
-- What is the shape of the `samples` matrix? Take a look at [cv::CovarFlags]. Flags can be combined like this: `flag1|flag2`.
+- Take a look at [cv::calcCovarMatrix].
+- What is the shape of the `samples` matrix? Take a look at [cv::CovarFlags].
+  Flags can be combined like this: `flag1|flag2`.
+  We also need to normalise the covariance matrix when using [cv::calcCovarMatrix].
+  You can do this with the flag `COVAR_SCALE`.
+- Take a look at [cv::invert].
 
 ## 2. Implement the method `MultivariateNormalModel::computeMahalanobisDistances`
 Given a multivariate normal model, the Mahalanobis distance for a vector **x** is a measure of how well the vector fits with the model.
@@ -26,7 +30,10 @@ Given a multivariate normal model, the Mahalanobis distance for a vector **x** i
 This method should compute the Mahalanobis distance between every pixel in the input image and the estimated multivariate
 normal model described by `mean_` and `inverse_covariance_` and return an image of Mahalanobis distances.
 
-For tips about how to iterate `cv::Mat`s, you may take a look at the [OpenCV tutorials].
+
+Hints:
+- Take a look at [cv::Mahalanobis].
+- For tips about how to iterate `cv::Mat`s, you may take a look at the [OpenCV tutorials].
 
 ## Experiment!
 Now you should have a working segmentation method, and it is finally time to play around with it!
