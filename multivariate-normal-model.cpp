@@ -13,6 +13,13 @@ void MultivariateNormalModel::performTraining(const cv::Mat& samples)
   mean_ = cv::Mat::ones(1, samples.cols, CV_32F);                 // Dummy, replace
   covariance_ = cv::Mat::eye(samples.cols, samples.cols, CV_32F); // Dummy, replace
 
+  // We are going to compute the inverse of the estimated covariance,
+  // so we must ensure that that the matrix is indeed invertible (not singular).
+  if (cv::abs(cv::determinant(covariance_)) < 1e-14)
+  {
+    covariance_ += cv::Mat::eye(covariance_.size(), CV_32F)*1e-3;
+  }
+
   // TODO 1.2: Compute the inverse of the estimated covariance.
   inverse_covariance_ = cv::Mat::eye(samples.cols, samples.cols, CV_32F);  // Dummy, replace
 }
