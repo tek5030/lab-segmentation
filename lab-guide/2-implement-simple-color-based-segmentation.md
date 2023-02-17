@@ -16,9 +16,9 @@ It must also compute the inverse of the covariance matrix `inverse_covariance_`,
 Hints:
 - Take a look at [cv::calcCovarMatrix].
 - What is the shape of the `samples` matrix? Take a look at [cv::CovarFlags].
-  Flags can be combined like this: `flag1|flag2`.
-  We also need to normalise the covariance matrix when using [cv::calcCovarMatrix].
-  You can do this with the flag `COVAR_SCALE`.
+  Flags can be combined like this: `flag1|flag2`. 
+- We also need to normalise the covariance matrix when using [cv::calcCovarMatrix].
+  You can do this with the flag `COVAR_SCALE`, or better still, make the covariance estimate unbiased by scaling the unormalised covariance with 1/(N-1), where N is the numer of samples.
 - Take a look at [cv::invert].
 
 ## 2. Implement the method `MultivariateNormalModel::computeMahalanobisDistances`
