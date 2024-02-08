@@ -8,7 +8,7 @@ This function lets us update the model by replacing a fraction of the existing `
 This will make the model gradually change over time, and we are able to control the rate of how fast it changes by adjusting the `update_ratio` argument.
 The `update_ratio` should be a number between 0 and 1, where 0.1 means that a random 10% of `old_samples` are being replaced with new one each iteration.
 
-Keypress **a** activates/deactivates the adaptive functionality.
+Keypress <kbd>a</kbd> activates/deactivates the adaptive functionality.
 
 In its current state, this method does not perform any update at all.
 Your job is to implement this method so that it works as intended.
