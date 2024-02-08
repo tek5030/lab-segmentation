@@ -42,15 +42,14 @@ For example:
 - Try it out on different colours/surfaces. How well does it work?
 - Try changing the threshold manually using the slider.
 - As we know, Otsu's method estimates a threshold between modes in a bimodal histogram distribution.
-  Check out how well Otsu's method estimates a decent threshold by pressing `o`.
+  Check out how well Otsu's method estimates a decent threshold by pressing <kbd>o</kbd>.
   When does Otsu's work well, and when is the threshold estimate bad?
   Why?
 
-
 You can now continue to the [next step](3-further-work.md) to make it a bit more advanced.
 
-[cv::calcCovarMatrix]: https://docs.opencv.org/4.5.5/d2/de8/group__core__array.html#gae6ffa9354633f984246945d52823165d
-[cv::CovarFlags]: https://docs.opencv.org/4.5.5/d0/de1/group__core.html#ga719ebd4a73f30f4fab258ab7616d0f0f
-[cv::invert]: https://docs.opencv.org/4.5.5/d2/de8/group__core__array.html#gad278044679d4ecf20f7622cc151aaaa2
-[cv::Mahalanobis]: https://docs.opencv.org/4.5.5/d2/de8/group__core__array.html#ga4493aee129179459cbfc6064f051aa7d
-[OpenCV tutorials]: https://docs.opencv.org/4.5.5/db/da5/tutorial_how_to_scan_images.html
+[cv::calcCovarMatrix]: https://docs.opencv.org/4.9.0/d2/de8/group__core__array.html#gae6ffa9354633f984246945d52823165d
+[cv::CovarFlags]: https://docs.opencv.org/4.9.0/d0/de1/group__core.html#ga719ebd4a73f30f4fab258ab7616d0f0f
+[cv::invert]: https://docs.opencv.org/4.9.0/d2/de8/group__core__array.html#gad278044679d4ecf20f7622cc151aaaa2
+[cv::Mahalanobis]: https://docs.opencv.org/4.9.0/d2/de8/group__core__array.html#ga4493aee129179459cbfc6064f051aa7d
+[OpenCV tutorials]: https://docs.opencv.org/4.9.0/db/da5/tutorial_how_to_scan_images.html

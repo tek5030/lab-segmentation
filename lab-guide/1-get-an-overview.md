@@ -21,14 +21,14 @@ This is a simplistic approach, but the method can naturally be generalised and i
 ## Main steps in this lab
 1. **Estimate a multivariate normal distribution** by training on the feature samples in a predefined sample region.
 
-![illustration of the estimation process](img/from_rgb_to_normal_dist.png)
+   ![illustration of the estimation process](img/from_rgb_to_normal_dist.png)
 
 2. **Compute Mahalanobis images** by calculating the Mahalanobis distance between each pixel and the model.
 
 3. **Detect similar pixels** by thresholding the Mahalanobis image.
    The final binary image is the result of our segmentation method.
 
-![Illustration of the evaluation process](img/from_rgb_and_normal_dist_to_segmentation.png)
+   ![Illustration of the evaluation process](img/from_rgb_and_normal_dist_to_segmentation.png)
 
 4. We will also implement **an adaptive segmentation procedure**, that gradually updates the model based on how the pixels in the sampling region change over time.
 
@@ -40,10 +40,10 @@ We have chosen to distribute the code on the following files:
   Contains the main loop of the program, the unfinished model and some other functions you will complete.
 
   Note in particular that:
-  - Keypress `space` extracts samples from the sampling region and estimates a new multivariate normal model
-  - Keypress `o` turns thresholding by Otsu's method on/off (Default is off)
-  - Keypress `a` turns the adaptive model on/off (Default is off)
-  - Keypress `q` exits the program
+  - Keypress <kbd>space</kbd> extracts samples from the sampling region and estimates a new multivariate normal model
+  - Keypress <kbd>o</kbd> turns thresholding by Otsu's method on/off (Default is off)
+  - Keypress <kbd>a</kbd> turns the adaptive model on/off (Default is off)
+  - Keypress <kbd>q</kbd> exits the program
 
   If you want to work on images from one of the videos instead of from the camera, you can change to code from `int video_source = 0` to `std::string video_source = "your_video_file.avi"`.
 
