@@ -48,7 +48,18 @@ Try using more than 3 features per pixel.
 - Other ideas?
 
 
-## 6. Use the segmentation method
+## 6. Compute contours of the segmented objects and extract interesting features
+In OpenCV you can use the contour of segmented areas to compute a set of different features of that object, such as center of mass, orientation, area and so on.
+You can even fit ellipses or lines to your objects.
+
+Take a look at the following OpenCV tutorials and experiment with feature extraction based on contours!
+- [Contours: Getting Started]
+- [Contour Features]
+- [Contour Properties]
+- [Some C++ examples]
+
+
+## 7. Use the segmentation method
 Here are some suggestions:
 - Insert a background image in the segmented area (like with a green screen)
 - Track the pixel coordinates of a coloured object
@@ -60,3 +71,8 @@ Here are some suggestions:
 [cv::connectedComponentsWithStats]: https://docs.opencv.org/4.5.5/d3/dc0/group__imgproc__shape.html#gae57b028a2b2ca327227c2399a9d53241
 [color conversions]: https://docs.opencv.org/4.5.5/de/d25/imgproc_color_conversions.html
 [cv::cvtColor]: https://docs.opencv.org/4.5.5/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab
+
+[Contours: Getting Started]: https://docs.opencv.org/4.9.0/d4/d73/tutorial_py_contours_begin.html
+[Contour Features]: https://docs.opencv.org/4.9.0/dd/d49/tutorial_py_contour_features.html
+[Contour Properties]: https://docs.opencv.org/4.9.0/d1/d32/tutorial_py_contour_properties.html
+[Some C++ examples]: https://docs.opencv.org/4.9.0/d7/da8/tutorial_table_of_content_imgproc.html
